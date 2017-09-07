@@ -28,14 +28,19 @@ io.on('connection', (socket) => {
       console.log('CreateEmail', newEmail);
    });
 
-   socket.emit('newMessage', {
-      from: 'ikke@mail.com',
-      text: 'Altijd maar die tests',
-      createdAt: 5646546
-   });
+   // socket.emit('newMessage', {
+   //    from: 'ikke@mail.com',
+   //    text: 'Altijd maar die tests',
+   //    createdAt: 5646546
+   // });
 
-   socket.on('createMessage', (newBericht) => {
-      console.log('createMessage', newBericht);
+   socket.on('createMessage', (message) => {
+      console.log('createMessage', message);
+      io.emit('newMessage', {
+         from: message.from, // verwijst als het goed is naar message hierboven
+         text: message.text,
+         createdAt: new Date().getTime()
+      });
    });
 
 
