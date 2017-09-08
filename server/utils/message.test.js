@@ -13,7 +13,7 @@ describe('generateMessage', () => {
       var text = 'Het wordt nog wat';
       var message = generateMessage(from, text);
 
-      // expect(message.createdAt).toBeA('number');
+      expect(message.createdAt).toBeA('number');
       expect(message).toInclude({from, text});
       // assert from match
       // assert text match
