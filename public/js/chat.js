@@ -43,6 +43,17 @@ socket.on('disconnect', function() {
    console.log('Disconnected from Server');
 });
 
+socket.on('updateUserList', function(users) {
+   // console.log('Users list', users);
+   var ol = jQuery('<ol></ol>');
+
+   users.forEach(function (user) {
+      ol.append(jQuery('<li></li>').text(user));
+   });
+   jQuery('#users').html(ol); // Toevoeging aan DOM
+   // #users (id users) komt uit chat.html <div id=users>
+});
+
 socket.on('newEmail', function(email) {
    console.log('New Email', email);
 });
