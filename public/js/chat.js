@@ -51,7 +51,7 @@ socket.on('updateUserList', function(users) {
       ol.append(jQuery('<li></li>').text(user));
    });
    jQuery('#users').html(ol); // Toevoeging aan DOM
-   // #users (id users) komt uit chat.html <div id=users>
+   // #users komt uit chat.html <div id=users></div>
 });
 
 socket.on('newEmail', function(email) {
@@ -108,7 +108,6 @@ jQuery('#message-form').on('submit', function (e) {
    var messageTextbox = jQuery('[name=message]');
 
    socket.emit('createMessage', {
-      from: 'User',
       text: messageTextbox.val()
    }, function() {
       messageTextbox.val(' ')
